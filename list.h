@@ -161,11 +161,11 @@ public:
 				newAtIndex->next = postIndex;
 				newAtIndex->prev = preIndex;
 				newAtIndex->data = data;
+				size_v++;
 			}
 		}
 		else
 			throw std::out_of_range("Can't add an element at specified index!");
-		size_v++;
 	}
 
 	// Removes an element at index 'index' from the list
@@ -194,11 +194,11 @@ public:
 				preIndex->next = postIndex;
 				postIndex->prev = preIndex;
 				delete atIndex;
+				size_v--;
 			}
 		}
 		else
 			throw std::out_of_range("Can't remove node at specified index!");
-		size_v--;
 	}
 
 	// Return the index of an element with data 'toFind'
@@ -311,11 +311,11 @@ public:
 			delete this;
 		}
 
-		t next() override
+		t &next() override
 		{
 			if (hasNext())
 			{
-				t temp = current->data;
+				t &temp = current->data;
 				current = current->next;
 				return temp;
 			}

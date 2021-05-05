@@ -226,11 +226,11 @@ public:
 			delete this;
 		}
 
-		t next() override
+		t &next() override
 		{
 			if (hasNext())
 			{
-				t temp = current->data;
+				t &temp = current->data;
 				current = current->link;
 				return temp;
 			}
